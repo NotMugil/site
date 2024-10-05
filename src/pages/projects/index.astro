@@ -17,7 +17,7 @@ const projects = await getCollection("projects");
 </div>
 
   <!-- <hr class="my-8 border-[1px] opacity-5" /> -->
-  <ul class="grid grid-cols-1 md:grid-cols-2 list-none gap-2 p-0">
+  <ul class="grid grid-cols-1 list-none gap-2 p-0">
     {projects.map((project: any) => <Project project={project} />)}
   </ul>
 </Layout>

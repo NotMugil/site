@@ -22,6 +22,10 @@ export const NAV_LINKS: NavigationLinks = {
     path: "/projects",
     label: "projects",
   },
+  bookshelf: {
+    path: "/bookshelf",
+    label: "bookshelf",
+  },
 };
 
 export const SOCIAL_LINKS: SocialLinks = {

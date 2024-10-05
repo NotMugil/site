@@ -18,7 +18,7 @@ const { project } = Astro.props;
     <a href={project.data.url} class="text-white no-underline">
       <li>
         <div class="flex flex-col">
-          <div>
+          <!-- <div>
             {
               project.data.image && (
                 <div class="max-w-full sm:flex-shrink-0 mb-2">
@@ -32,7 +32,7 @@ const { project } = Astro.props;
                 </div>
               )
             }
-          </div>
+          </div> -->
           <p class="text-lg font-bold pb-1">{project.data.title}</p>
           <p class="text-sm text-gray-300">{project.data.description}</p>
           <div class="mt-2">

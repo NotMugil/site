@@ -29,22 +29,6 @@ export function readingTime(html: string) {
   return `${readingTimeMinutes} min read`
 }
 
-// export async function fetchAuthor(authorSlug: string) {
-//   try {
-//     const authors = await getCollection('authors');
-//     const authorEntry = authors.find((author) => author.slug === authorSlug);
-
-//     if (!authorEntry) {
-//       throw new Error(`Author not found for slug: ${authorSlug}`);
-//     }
-
-//     return authorEntry.data;
-//   } catch (error) {
-//     console.error(`Error fetching author: ${error.message}`);
-//     return null; 
-//   }
-// }
-
 export async function parseAuthors(authors: string[]) {
   if (!authors || authors.length === 0) return []
 
