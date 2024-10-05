@@ -10,7 +10,7 @@ const { project } = Astro.props;
 ---
 
 <div
-  class="flex gap-0 rounded-md bg-[#0f0f0f] hover:bg-[#171717] p-4 border-opacity-0 hover:border hover:border-gray-300 hover:border-opacity-10"
+  class="flex gap-0 rounded-md border-opacity-0 bg-[#0f0f0f] p-4 hover:border hover:border-gray-300 hover:border-opacity-10 hover:bg-[#171717]"
 >
   <div
     class="bg-opacity-70 transition duration-300 ease-in-out hover:bg-opacity-100"
@@ -18,36 +18,20 @@ const { project } = Astro.props;
     <a href={project.data.url} class="text-white no-underline">
       <li>
         <div class="flex flex-col">
-          <!-- <div>
-            {
-              project.data.image && (
-                <div class="max-w-full sm:flex-shrink-0 mb-2">
-                  <Image
-                    src={project.data.image || './../../public/1200x630.png'}
-                    alt={project.data.imageAlt}
-                    width={1200}
-                    height={630}
-                    class="object-cover"
-                  />
-                </div>
-              )
-            }
-          </div> -->
-          <p class="text-lg font-bold pb-1">{project.data.title}</p>
+          <p class="pb-1 text-lg font-bold">{project.data.title}</p>
           <p class="text-sm text-gray-300">{project.data.description}</p>
           <div class="mt-2">
             {
               project.data.tags && (
                 <div class="flex flex-wrap gap-2">
                   {project.data.tags.map((tag: any) => (
-                    <span class="text-gray-400 text-sm">{tag}</span>
+                    <span class="text-sm text-gray-400">{tag}</span>
                   ))}
                 </div>
               )
             }
           </div>
         </div>
-        <!-- <a class="mt-" href={project.data.url}> <span class="mt-4 1underline">Learn More</span></p> -->
       </li>
     </a>
   </div>

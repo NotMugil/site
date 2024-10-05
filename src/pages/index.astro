@@ -24,12 +24,7 @@ const projects = (await getCollection("projects")).slice(0, 3);
   <SeoPage slot="head" />
   <main>
     <Hero />
-    <!-- <div class="prose-dark prose">
-      <Introduction />
-    </div> -->
-
-    <hr class="my-8 border-[1px] opacity-5 w-1/5" />
-
+    <hr class="my-8 w-1/5 border-[1px] opacity-5" />
     <!-- Blog posts -->
     <div class="mb-6">
       <div class="mb-6 flex flex-row items-center justify-between">
@@ -39,18 +34,24 @@ const projects = (await getCollection("projects")).slice(0, 3);
             I don't write much but here are some.
           </p>
         </div>
-        <a href="/blog" class="text-gray-400 no-underline hover:underline"
-          >see all posts</a
+        <a
+          href="/blog"
+          class="hidden text-gray-400 no-underline hover:underline md:block"
+          >view all posts</a
         >
       </div>
       <ul class="grid list-none gap-2 p-0">
         {posts.map((post: any) => <BlogCard post={post} />)}
       </ul>
     </div>
+    <a
+      href="/projects"
+      class="mt-2 block text-gray-400 no-underline hover:underline md:hidden"
+      ><span class="underline">see more</span></a
+    >
   </main>
 
-  <hr class="my-8 border-[1px] opacity-5 w-1/5" />
-
+  <hr class="my-8 w-1/5 border-[1px] opacity-5" />
 
   <!-- Projects cards -->
   <div class="mb-6">
@@ -61,12 +62,19 @@ const projects = (await getCollection("projects")).slice(0, 3);
           Projects that I've developed or contributed to.
         </p>
       </div>
-      <a href="/projects" class="text-gray-400 no-underline hover:underline"
-        >see more</a
+      <a
+        href="/projects"
+        class="hidden text-gray-400 no-underline hover:underline md:block"
+        >view all projects</a
       >
     </div>
-    <ul class="grid list-none grid-cols-1 md:grid-cols-3 gap-2 p-0">
+    <ul class="grid list-none grid-cols-1 gap-2 p-0 md:grid-cols-3">
       {projects.map((project: any) => <ProjectCard project={project} />)}
     </ul>
   </div>
+  <a
+    href="/projects"
+    class="mt-2 block text-gray-400 no-underline hover:underline md:hidden"
+    ><span class="underline">see more</span></a
+  >
 </Layout>

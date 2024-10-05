@@ -4,13 +4,15 @@ import { formatDate } from "@/lib/util";
 const { post } = Astro.props;
 ---
 
-<li class="flex flex-col py-2 no-underline border-t border-b border-opacity-0 border-white">
+<li
+  class="flex flex-col border-b border-t border-white border-opacity-0 py-2 no-underline"
+>
   <a href={`/blog/${post.slug}`} class="text-white no-underline">
-    <div class="flex flex-col md:flex-row justify-between lg:gap-8">
+    <div class="flex flex-col justify-between md:flex-row lg:gap-8">
       <div>
         <span>{post.data.title}</span>
       </div>
-      <div class="text-gray-500 whitespace-nowrap text-sm md:text-md">
+      <div class="md:text-md whitespace-nowrap text-sm text-gray-500">
         {formatDate(post.data.publicationDate)}
       </div>
     </div>

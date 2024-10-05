@@ -2,14 +2,21 @@
 import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/consts";
 ---
 
-<header class="sticky top-4 pb-8 z-50 m-4 mx-auto justify-center flex overflow-x-hidden">
+<header
+  class="sticky top-4 z-50 m-4 mx-auto flex justify-center overflow-x-hidden pb-8"
+>
   <div
-    class="backdrop-blur-lg bg-[#171717] bg-opacity-80 px-8 mx-4 flex flex-col md:flex-row rounded-lg w-full"
+    class="mx-4 flex w-full flex-col rounded-lg bg-[#171717] bg-opacity-80 px-8 backdrop-blur-lg md:flex-row"
   >
-    <div class="w-full flex flex-row justify-between items-center my-1">
+    <div class="my-1 flex w-full flex-row items-center justify-between">
       <div class="p-2">
-        <a href="/" class="text-md mr-auto px-2 font-semibold no-underline sm:text-xl">
-          <span class="text-violet-500">not</span><span class="text-white">mugil.</span>
+        <a
+          href="/"
+          class="text-md mr-auto px-2 font-semibold no-underline sm:text-xl"
+        >
+          <span class="text-violet-500">not</span><span class="text-white"
+            >mugil.</span
+          >
         </a>
       </div>
       <div>
@@ -27,59 +34,76 @@ import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/consts";
         </button>
       </div>
     </div>
-    <nav class="text-secondary md:pl-0 md:flex md:align-center md:mx-auto">
-        <ul id="nav-list" class="nav-li hidden mb-4 mx-1 md:my-auto md:flex md:flex-nowrap md:gap-4 my-auto md:align-center transition-all duration-300">
-          {
-            Object.keys(NAV_LINKS).map((navItemKey) => {
-              return (
-                <li class="p-1 md:p-0 self-center">
-                  <a
-                    href={NAV_LINKS[navItemKey].path}
-                    class="mx-2 text-white no-underline opacity-80 hover:opacity-100"
-                  >
-                    {NAV_LINKS[navItemKey].label}
-                  </a>
-                </li>
-              );
-            })
-          }
-          <li class="p-2 my-auto items-center px-2 text-white">
-            <a
-              href="https://github.com/NotMugil"
-              target="_blank"
-              class="text-white opacity-80 hover:opacity-100"
+    <nav class="text-secondary md:align-center md:mx-auto md:flex md:pl-0">
+      <ul
+        id="nav-list"
+        class="nav-li md:align-center mx-1 my-auto mb-4 hidden transition-all duration-300 md:my-auto md:flex md:flex-nowrap md:gap-4"
+      >
+        {
+          Object.keys(NAV_LINKS).map((navItemKey) => {
+            return (
+              <li class="self-center p-1 md:p-0">
+                <a
+                  href={NAV_LINKS[navItemKey].path}
+                  class="mx-2 text-white no-underline opacity-80 hover:opacity-100"
+                >
+                  {NAV_LINKS[navItemKey].label}
+                </a>
+              </li>
+            );
+          })
+        }
+        <li class="my-auto items-center p-2 px-2 text-white">
+          <a
+            href="https://github.com/NotMugil"
+            target="_blank"
+            class="text-white opacity-80 hover:opacity-100"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-github"
+              ><path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+              ></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg
             >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
-
-  <script>
-    function setupMenu() {
-      const navList = document.getElementById("nav-list");
-      const toggler = document.getElementById("menu-toggle");
-
-      console.log("Setting up menu");
-      console.log("navList:", navList);
-      console.log("toggler:", toggler);
-
-      if (navList && toggler) {
-        toggler.addEventListener("click", () => {
-          console.log("Toggle clicked");
-          navList.classList.toggle("hidden");
-          console.log("navList classes after toggle:", navList.classList);
-        });
-      } else {
-        console.error("navList or toggler is null");
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", setupMenu);
-    document.addEventListener("astro:page-load", setupMenu);
-
-    console.log("Script loaded");
-    setupMenu();
-  </script>
 </header>
+
+<script>
+  function setupMenu() {
+    const navList = document.getElementById("nav-list");
+    const toggler = document.getElementById("menu-toggle");
+
+    console.log("Setting up menu");
+    console.log("navList:", navList);
+    console.log("toggler:", toggler);
+
+    if (navList && toggler) {
+      toggler.addEventListener("click", () => {
+        console.log("Toggle clicked");
+        navList.classList.toggle("hidden");
+        console.log("navList classes after toggle:", navList.classList);
+      });
+    } else {
+      console.error("navList or toggler is null");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", setupMenu);
+  document.addEventListener("astro:page-load", setupMenu);
+
+  console.log("Script loaded");
+  setupMenu();
+</script>
