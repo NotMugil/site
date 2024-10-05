@@ -22,7 +22,7 @@ const statusColor = getStatusColor(book.data.status);
 <div class="book-card bg-[#0a0a0a] hover:bg-[#171717]  ease-in-out border border-white border-opacity-5 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl">
   <a href={book.data.goodreadsUrl} target="_blank">
 
-      <div class="m-4 mb-0 rounded relative h-64">
+      <div class="m-4 mb-0 rounded relative h-52 md:h-64">
           <Image
       src={book.data.cover}
       alt={`Cover of ${book.data.title}`}
