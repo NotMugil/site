@@ -6,10 +6,12 @@ import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import remarkEmoji from "remark-emoji"
+import expressiveCode from "astro-expressive-code";
+import { pluginFrames, pluginTextMarkers, pluginShiki } from "astro-expressive-code";
 
 export default defineConfig({
   site: "http://notmugil.me",
-  integrations: [tailwind(), sitemap(), mdx()],
+  integrations: [tailwind(), sitemap(), expressiveCode(), mdx()],
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [rehypeKatex, rehypeHeadingIds],
