@@ -21,7 +21,6 @@ const currentRead = books
 const readingChallenge = getReadingChallenge(books);
 const readingStats = getReadingStats(books);
 
-// We'll use this clientside to update the quote
 const quotes = books
     .filter((book) => book.data.favoriteQuote)
     .map((book) => ({

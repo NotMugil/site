@@ -61,11 +61,11 @@ const projects = (await getCollection("projects")).slice(0, 3);
           Projects that I've developed or contributed to.
         </p>
       </div>
-      <a href="/blog" class="text-gray-400 no-underline hover:underline"
-        >see all posts</a
+      <a href="/projects" class="text-gray-400 no-underline hover:underline"
+        >see more</a
       >
     </div>
-    <ul class="grid list-none grid-cols-3 gap-2 p-0">
+    <ul class="grid list-none grid-cols-1 md:grid-cols-3 gap-2 p-0">
       {projects.map((project: any) => <ProjectCard project={project} />)}
     </ul>
   </div>
