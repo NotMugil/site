@@ -1,0 +1,73 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+
+import Introduction from "@/components/Introduction.astro";
+import BlogCard from "@/components/BlogCard.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import SeoPage from "@/components/SeoPage.astro";
+import Hero from "@/components/Hero.astro";
+
+const posts = (await getCollection("blog"))
+  .sort(
+    (
+      a: { data: { publicationDate: number } },
+      b: { data: { publicationDate: number } },
+    ) => b.data.publicationDate.valueOf() - a.data.publicationDate.valueOf(),
+  )
+  .slice(0, 3);
+
+const projects = (await getCollection("projects")).slice(0, 3);
+---
+
+<Layout>
+  <SeoPage slot="head" />
+  <main>
+    <Hero />
+    <!-- <div class="prose-dark prose">
+      <Introduction />
+    </div> -->
+
+    <hr class="my-8 border-[1px] opacity-5" />
+
+    <!-- Blog posts -->
+    <div class="mb-6">
+      <div class="mb-6 flex flex-row items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-white">Recent blogs</h2>
+          <p class="text-sm text-gray-500">
+            I don't write much but here are some.
+          </p>
+        </div>
+        <a href="/blog" class="text-gray-400 no-underline hover:underline"
+          >see all posts</a
+        >
+      </div>
+      <ul class="grid list-none gap-2 p-0">
+        {posts.map((post: any) => <BlogCard post={post} />)}
+      </ul>
+    </div>
+  </main>
+
+  <hr class="my-8 border-[1px] opacity-5" />
+
+
+  <!-- Projects cards -->
+  <div class="mb-6">
+    <div class="mb-6 flex flex-row items-center justify-between">
+      <div>
+        <h2 class="text-lg font-bold text-white">Featured projects</h2>
+        <p class="text-sm text-gray-500">
+          Projects that I've developed or contributed to.
+        </p>
+      </div>
+      <a href="/blog" class="text-gray-400 no-underline hover:underline"
+        >see all posts</a
+      >
+    </div>
+    <ul class="grid list-none grid-cols-3 gap-2 p-0">
+      {projects.map((project: any) => <ProjectCard project={project} />)}
+    </ul>
+  </div>
+</Layout>

@@ -1,0 +1,53 @@
+---
+import { formatDate, readingTime } from "@/lib/util";
+import { Image } from "astro:assets";
+
+const { post } = Astro.props;
+
+const readTime = readingTime(post.body)
+---
+
+<li class="flex flex-col p-4 border border-white border-opacity-5 rounded-md no-underline sm:justify-between mb-4">
+  <a href={`/blog/${post.slug}`}>
+    <div class="flex flex-col md:flex-col gap-4 relative">
+      <div>
+        {
+          post.data.image && (
+            <div class="min-w-full sm:flex-shrink-0">
+              <Image
+                src={post.data.image ?? '../../public/1200x630.png'}
+                alt={post.data.imageAlt}
+                width={1200}
+                height={630}
+                class="object-cover rounded"
+              />
+            </div>
+          )
+        }
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
+      <div class="flex flex-col gap-2 absolute bottom-4 left-4">
+        <h1 class="text-xl font-bold">{post.data.title}</h1>
+        <p class="text-md">{post.data.description}</p>
+      </div>
+    </div>
+    <div class="mt-4 flex justify-between">
+    <div>
+      {
+        post.data.tags && (
+          <div class="flex flex-wrap gap-2">
+            {post.data.tags.map((tag: any) => (
+              <span class="text-sm text-gray-400 px-2 rounded bg-[#171717] border border-white border-opacity-5">{tag}</span>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <div class="flex flex-row gap-2 items-center text-gray-400">
+      <p class="text-xs md:text-sm">{readTime}</p>
+      <span class="text-xs md:text-sm">•</span>
+      <p class="text-xs md:text-sm">{formatDate(post.data.publicationDate)}</p>
+    </div>
+    </div>
+  </a>
+</li>
