@@ -53,4 +53,22 @@ const authors = defineCollection({
   }),
 })
 
-export const collections = { blog, projects, authors };
+const books = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    cover: z.string().optional(),
+    genre: z.string(),
+    status: z.enum(['reading', 'read', 'to-read']),
+    progress: z.number().min(0).max(100).optional(),
+    review: z.string().optional(),
+    rating: z.number().min(1).max(5).optional(),
+    favoriteQuote: z.string().optional(),
+    dateStarted: z.date().optional(),
+    dateFinished: z.date().optional(),
+    goodreadsUrl: z.string().url().optional(),
+  }),
+});
+
+export const collections = { blog, projects, authors, books };

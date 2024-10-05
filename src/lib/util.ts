@@ -1,6 +1,5 @@
-import { getEntry } from 'astro:content'
 import { SITE } from "@/consts";
-import { getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 
 export function formatDate(
   date: Date,
@@ -53,4 +52,47 @@ export async function parseAuthors(authors: string[]) {
   }
 
   return await Promise.all(authors.map(parseAuthor))
+}
+
+export function getReadingChallenge(books: CollectionEntry<'books'>[]) {
+  const currentYear = new Date().getFullYear();
+
+  const currentBooks = books.filter(book => {
+    const dateStarted = new Date(book.data.dateStarted);
+    const isRead = book.data.status === 'read';
+    const isStartedThisYear = dateStarted.getFullYear() === currentYear;
+
+    return isRead && isStartedThisYear;
+  });
+
+  return {
+    goal: 24,
+    current: currentBooks.length,
+    year: currentYear
+  };
+}
+
+function getMostReadGenre(books: CollectionEntry<'books'>[]) {
+  const genreCounts = books.reduce((acc, book) => {
+    acc[book.data.genre] = (acc[book.data.genre] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+  return Object.entries(genreCounts).sort((a, b) => b[1] - a[1])[0][0];
+}
+
+export function getReadingStats(books: CollectionEntry<'books'>[]) {
+  return {
+    totalBooks: books.length,
+    favoriteGenre: getMostReadGenre(books),
+    averagePerMonth: (books.filter(book => book.data.status === 'read').length / 12).toFixed(1)
+  };
+}
+
+export function getRandomQuote(books: CollectionEntry<'books'>[]) {
+  const quotesBooks = books.filter(book => book.data.favoriteQuote);
+  const randomBook = quotesBooks[Math.floor(Math.random() * quotesBooks.length)];
+  return {
+    quote: randomBook.data.favoriteQuote,
+    book: randomBook.data.title
+  };
 }

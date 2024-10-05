@@ -1,6 +1,136 @@
 ---
+// src/pages/bookshelf.astro
+import { getCollection } from "astro:content";
+import BookCard from "@/components/BookCard.astro";
+import Reading from "@/components/Reading.astro";
 import Layout from "@/layouts/Layout.astro";
+import {
+    getReadingChallenge,
+    getReadingStats,
+    getRandomQuote,
+} from "@/lib/util";
+
+// Fetch all book entries
+const books = await getCollection("books");
+
+const currentRead = books
+    .filter((book) => book.data.status === "reading")
+    .sort(
+        (a, b) => new Date(b.data.dateStarted) - new Date(a.data.dateStarted),
+    )[0];
+const readingChallenge = getReadingChallenge(books);
+const readingStats = getReadingStats(books);
+
+// We'll use this clientside to update the quote
+const quotes = books
+    .filter((book) => book.data.favoriteQuote)
+    .map((book) => ({
+        quote: book.data.favoriteQuote,
+        book: book.data.title,
+    }));
+
+const categories = ["All", ...new Set(books.map((book) => book.data.status))];
 ---
+
 <Layout>
-    
+    <div class="container mx-auto">
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold">My Bookshelf</h1>
+            <p class="text-sm text-gray-400">
+                What I'm reading currently and planning on to read
+            </p>
+        </div>
+        <!-- Current Read -->
+        {currentRead && <Reading book={currentRead} />}
+
+        <!-- Random Quote -->
+        <div class="mb-8" id="random-quote">
+            <h2 class="mb-4 text-2xl font-semibold">Quote of the Moment</h2>
+            <blockquote
+                class="mb-4 flex flex-col items-center gap-4 rounded-md bg-[#171717] p-4 text-center"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-quote"
+                    ><path
+                        d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"
+                    ></path><path
+                        d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"
+                    ></path></svg
+                >
+                <p class="italic" id="quote-text"></p>
+                <p class="mt-2 text-sm text-gray-600" id="quote-book"></p>
+            </blockquote>
+        </div>
+
+        <!-- Reading Challenge -->
+        <div class="mb-8">
+            <h2 class="mb-4 text-2xl font-semibold">
+                {readingChallenge.year}'s Reading Challenge
+            </h2>
+            <div class="rounded-md bg-[#171717] p-4">
+                <p>
+                    {readingChallenge.current} of {readingChallenge.goal} books read
+                </p>
+                <div
+                    class="mt-2 h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700"
+                >
+                    <div
+                        class="h-2.5 rounded-full bg-violet-500"
+                        style={`width: ${(readingChallenge.current / readingChallenge.goal) * 100}%`}
+                    >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reading Stats -->
+        <div class="mb-8">
+            <h2 class="mb-4 text-2xl font-semibold">Reading Stats</h2>
+            <div class="rounded-md bg-[#171717] p-4">
+                <p>Total Books: {readingStats.totalBooks}</p>
+                <p>Favorite Genre: {readingStats.favoriteGenre}</p>
+                <p>
+                    Average Books per Month: {readingStats.averagePerMonth}
+                </p>
+            </div>
+        </div>
+
+        <!-- Book Categories -->
+        <div class="">
+            <div class="mb-4">
+                <h2 class="text-2xl font-semibold">Shelves</h2>
+                <p class="text-sm text-gray-400">
+                    Here is all of the books I bought so far.
+                </p>
+            </div>
+            <div
+                class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+            >
+                {books.map((book) => <BookCard book={book} />)}
+            </div>
+        </div>
+    </div>
+
+    <script define:vars={{ quotes }}>
+        function updateQuote() {
+            const quoteText = document.getElementById("quote-text");
+            const quoteBook = document.getElementById("quote-book");
+            const randomQuote =
+                quotes[Math.floor(Math.random() * quotes.length)];
+            quoteText.textContent = `"${randomQuote.quote}"`;
+            quoteBook.textContent = `- ${randomQuote.book}`;
+        }
+
+        updateQuote();
+        setInterval(updateQuote, 5 * 60 * 1000); // Update every 5 minutes
+    </script>
 </Layout>

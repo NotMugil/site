@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Satoshi"],
+        mono: ["Space Mono"],
         serif: [""],
       },
       typography: {
