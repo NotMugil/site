@@ -1,7 +1,7 @@
 ---
 title: Exploring the World of Web Development
 description: A deep dive into the evolving landscape of web development in 2024.
-publicationDate: 2024-10-01
+publicationDate: 2023-10-01
 author: notmugil
 image: ./web-development.png
 imageAlt: A laptop with code on the screen representing web development

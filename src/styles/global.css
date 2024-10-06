@@ -27,4 +27,20 @@ kbd {
   white-space: nowrap;
 }
 
+.prose pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 
+/* Adjust font sizes for mobile */
+@media (max-width: 768px) {
+  .prose {
+    font-size: 16px;
+  }
+  .prose pre,
+  .prose code {
+    font-size: 14px;
+  }
+}
