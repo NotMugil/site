@@ -1,8 +1,8 @@
 ---
-// src/pages/bookshelf.astro
 import { getCollection } from "astro:content";
 import BookCard from "@/components/BookCard.astro";
 import Reading from "@/components/Reading.astro";
+import SeoPage from "@/components/SeoPage.astro";
 import Layout from "@/layouts/Layout.astro";
 import {
     getReadingChallenge,
@@ -32,6 +32,7 @@ const categories = ["All", ...new Set(books.map((book) => book.data.status))];
 ---
 
 <Layout>
+<SeoPage slot="head" title="Bookshelf" />
     <div class="container mx-auto">
         <div class="mb-8">
             <h1 class="text-2xl font-bold">My Bookshelf</h1>
