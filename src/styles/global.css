@@ -1,11 +1,32 @@
-@import url('https://fonts.cdnfonts.com/css/satoshi');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: "GeistMono";
+  src: url("/fonts/GeistMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Light";
+  src: url("/fonts/Geist-Light.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
   body {
     background-color: #0a0a0a;
     color: white;
@@ -17,7 +38,9 @@ kbd {
   background-color: #171717;
   border: 1px solid #555;
   border-radius: 3px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 0 2px #171717; /* Subtle shadow */
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 0 0 2px #171717; /* Subtle shadow */
   display: inline-block;
   font-family: Arial, sans-serif;
   font-size: 0.85em;

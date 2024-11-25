@@ -6,8 +6,7 @@ import type {
 
 export const SITE: SiteConfiguration = {
   title: "notmugil",
-  description:
-    "personal site.",
+  description: "personal site.",
   url: "https://notmugil.me",
   author: "NotMugil",
   locale: "en-US",
@@ -21,10 +20,6 @@ export const NAV_LINKS: NavigationLinks = {
   projects: {
     path: "/projects",
     label: "projects",
-  },
-  bookshelf: {
-    path: "/bookshelf",
-    label: "bookshelf",
   },
 };
 
