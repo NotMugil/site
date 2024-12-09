@@ -25,10 +25,10 @@ const projects = defineCollection({
       title: z.string(),
       description: z.string(),
       image: image()
-      .refine((img) => img.width >= 1200, {
-        message: "Image should be 1200px × 630px.",
-      })
-      .optional(),
+        .refine((img) => img.width >= 1200, {
+          message: "Image should be 1200px × 630px.",
+        })
+        .optional(),
       imageAlt: z.string().optional(),
       author: z.string().optional(),
       publicationDate: z.coerce.date().optional(),
@@ -38,7 +38,7 @@ const projects = defineCollection({
 });
 
 const authors = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     name: z.string(),
     pronouns: z.string().optional(),
@@ -51,16 +51,16 @@ const authors = defineCollection({
     linkedin: z.string().url().optional(),
     discord: z.string().url().optional(),
   }),
-})
+});
 
 const books = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     author: z.string(),
     cover: z.string().optional(),
     genre: z.string(),
-    status: z.enum(['reading', 'read', 'to-read']),
+    status: z.enum(["reading", "read", "to-read"]),
     progress: z.number().min(0).max(100).optional(),
     review: z.string().optional(),
     rating: z.number().min(1).max(5).optional(),
