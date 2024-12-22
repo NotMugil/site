@@ -6,8 +6,8 @@ import SeoPage from "@/components/SeoPage.astro";
 
 const posts = (await getCollection("blog")).sort(
   (
-    a: { data: { publicationDate: number } },
-    b: { data: { publicationDate: number } },
+    a: { data: { publicationDate: any } },
+    b: { data: { publicationDate: any } },
   ) => b.data.publicationDate.valueOf() - a.data.publicationDate.valueOf(),
 );
 

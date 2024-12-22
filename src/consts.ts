@@ -26,14 +26,10 @@ export const NAV_LINKS: NavigationLinks = {
 export const SOCIAL_LINKS: SocialLinks = {
   email: {
     label: "Email",
-    url: "mailto:notmugil01@gmail.com",
+    url: "mailto:hi@notmugil.com",
   },
   github: {
     label: "GitHub",
     url: "https://github.com/NotMugil",
-  },
-  twitter: {
-    label: "Twitter",
-    url: "https://twitter.com/NotMugil",
   },
 };

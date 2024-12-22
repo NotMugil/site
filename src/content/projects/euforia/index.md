@@ -1,8 +1,8 @@
 ---
-title: Euforia
-description: Modern Music player with collaboration.
+title: euforia
+description: music player.
 image: ./alice.png
 imageAlt: Eggs, larva, pupa, adult.
-tags: ["music"]
-url: /projects
+tags: ["rust"]
+url: "https://github.com/NotMugil/euforia"
 ---

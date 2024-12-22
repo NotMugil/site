@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-
+import { Forward } from "lucide-astro";
 import Layout from "@/layouts/Layout.astro";
 
 import BlogCard from "@/components/BlogCard.astro";
@@ -11,8 +11,8 @@ import Hero from "@/components/Hero.astro";
 const posts = (await getCollection("blog"))
   .sort(
     (
-      a: { data: { publicationDate: number } },
-      b: { data: { publicationDate: number } },
+      a: { data: { publicationDate: any } },
+      b: { data: { publicationDate: any } },
     ) => b.data.publicationDate.valueOf() - a.data.publicationDate.valueOf(),
   )
   .slice(0, 3);
@@ -36,45 +36,35 @@ const projects = (await getCollection("projects")).slice(0, 3);
         </div>
         <a
           href="/blog"
-          class="hidden text-gray-400 no-underline hover:underline md:block"
-          >view all posts</a
+          class="hidden text-gray-400 no-underline hover:text-white hover:underline md:block"
+          ><Forward /></a
         >
       </div>
       <ul class="grid list-none gap-2 p-0">
         {posts.map((post: any) => <BlogCard post={post} />)}
       </ul>
     </div>
-    <a
-      href="/projects"
-      class="mt-2 block text-gray-400 no-underline hover:underline md:hidden"
-      ><span class="underline">see more</span></a
-    >
-  </main>
 
-  <hr class="my-8 w-1/5 border-[1px] opacity-5" />
+    <hr class="my-8 w-1/5 border-[1px] opacity-5" />
 
-  <!-- Projects cards -->
-  <div class="mb-6">
-    <div class="mb-6 flex flex-row items-center justify-between">
-      <div>
-        <h2 class="text-lg font-bold text-white">Featured projects</h2>
-        <p class="text-sm text-gray-500">
-          Projects that I've developed or contributed to.
-        </p>
+    <!-- Projects cards -->
+    <div class="mb-6">
+      <div class="mb-6 flex flex-row items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-white">Featured projects</h2>
+          <p class="text-sm text-gray-500">
+            Projects that I've developed or contributed to.
+          </p>
+        </div>
+        <a
+          href="/projects"
+          class="hidden text-gray-400 no-underline hover:text-white hover:underline md:block"
+          ><Forward /></a
+        >
       </div>
-      <a
-        href="/projects"
-        class="hidden text-gray-400 no-underline hover:underline md:block"
-        >view all projects</a
-      >
+      <ul class="grid list-none grid-cols-1 gap-2 p-0 md:grid-cols-3">
+        {projects.map((project: any) => <ProjectCard project={project} />)}
+      </ul>
     </div>
-    <ul class="grid list-none grid-cols-1 gap-2 p-0 md:grid-cols-3">
-      {projects.map((project: any) => <ProjectCard project={project} />)}
-    </ul>
-  </div>
-  <a
-    href="/projects"
-    class="mt-2 block text-gray-400 no-underline hover:underline md:hidden"
-    ><span class="underline">see more</span></a
-  >
+  </main>
 </Layout>
