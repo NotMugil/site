@@ -1,6 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import Drag from "@/components/animations/Drag.jsx";
+import SlideIn from "@/components/animations/SlideIn.jsx";
 import Layout from "@/layouts/Layout.astro";
 import Navigation from "@/components/Navigation.astro";
 import SeoPost from "@/components/SeoPost.astro";
@@ -44,50 +46,56 @@ const { Content, headings } = await entry.render();
     </div>
 
     <hr class="z-0 mb-6 mt-3 opacity-5" />
+    <SlideIn client:load>
+      <div class="mt-10 flex flex-row">
+        <article
+          class="flex-l prose prose-dark z-10 mx-auto w-full lg:max-w-screen-md"
+        >
+          <Content />
+        </article>
+      </div>
+    </SlideIn>
 
-    <div class="mt-10 flex flex-row">
-      <article
-        class="flex-l prose prose-dark z-10 mx-auto w-full lg:max-w-screen-md"
-      >
-        <Content />
-      </article>
-    </div>
-
-    <!-- Author Info -->
-    {
-      author ? (
-        <div class="mt-8 flex flex-col items-start gap-2">
-          <div>
-            {author.data.avatar && (
-              <Image
-                src={author.data.avatar}
-                alt={author.data.name || "undefined"}
-                width={34}
-                height={34}
-                class="h-auto rounded-md"
-              />
-            )}
+    <Drag client:load>
+      <!-- Author Info -->
+      {
+        author ? (
+          <div class="mt-8 flex flex-col items-start gap-2">
+            <div>
+              {author.data.avatar && (
+                <a href={`/authors/${author.slug}`}>
+                  <Image
+                    src={author.data.avatar}
+                    alt={author.data.name || "undefined"}
+                    width={34}
+                    height={34}
+                    draggable="false"
+                    class="z-100 index-10 h-auto cursor-pointer rounded-md"
+                  />
+                </a>
+              )}
+            </div>
+            <div class="flex flex-col">
+              <a
+                href={`/authors/${author.slug}`}
+                class="decor text-sm font-semibold text-gray-900 dark:text-gray-100"
+              >
+                by <span class="text-gray-400"> @{author.data.name} </span>
+              </a>
+            </div>
           </div>
-          <div class="flex flex-col">
-            <a
-              href={`/authors/${author.slug}`}
-              class="text-sm font-semibold text-gray-900 hover:text-violet-500 dark:text-gray-100"
-            >
-              by <span class="text-gray-400"> @{author.data.name} </span>
-            </a>
+        ) : (
+          <div class="mt-8 flex flex-col items-start text-center">
+            <div class="my-2 h-8 w-8 rounded-md bg-gray-200 dark:bg-gray-700" />
+            <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">
+              Unknown Author
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              This author is currently not listed in our records.
+            </p>
           </div>
-        </div>
-      ) : (
-        <div class="mt-8 flex flex-col items-start text-center">
-          <div class="my-2 h-8 w-8 rounded-md bg-gray-200 dark:bg-gray-700" />
-          <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">
-            Unknown Author
-          </p>
-          <p class="text-xs text-gray-500 dark:text-gray-400">
-            This author is currently not listed in our records.
-          </p>
-        </div>
-      )
-    }
+        )
+      }
+    </Drag>
   </div>
 </Layout>
