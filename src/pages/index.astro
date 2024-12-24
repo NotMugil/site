@@ -1,8 +1,10 @@
 ---
 import { getCollection } from "astro:content";
+import { motion } from "framer-motion";
 import { Forward } from "lucide-astro";
 import Layout from "@/layouts/Layout.astro";
-
+import FadeIn from "@/components/animations/FadeIn.jsx";
+import SlideIn from "@/components/animations/SlideIn.jsx";
 import BlogCard from "@/components/BlogCard.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import SeoPage from "@/components/SeoPage.astro";
@@ -40,9 +42,11 @@ const projects = (await getCollection("projects")).slice(0, 3);
           ><Forward /></a
         >
       </div>
-      <ul class="grid list-none gap-2 p-0">
-        {posts.map((post: any) => <BlogCard post={post} />)}
-      </ul>
+      <SlideIn client:visible>
+        <ul class="grid list-none gap-2 p-0">
+          {posts.map((post: any) => <BlogCard post={post} />)}
+        </ul>
+      </SlideIn>
     </div>
 
     <hr class="my-8 w-1/5 border-[1px] opacity-5" />
@@ -62,9 +66,11 @@ const projects = (await getCollection("projects")).slice(0, 3);
           ><Forward /></a
         >
       </div>
-      <ul class="grid list-none grid-cols-1 gap-2 p-0 md:grid-cols-3">
-        {projects.map((project: any) => <ProjectCard project={project} />)}
-      </ul>
+      <SlideIn client:load>
+        <ul class="grid list-none grid-cols-1 gap-2 p-0 md:grid-cols-3">
+          {projects.map((project: any) => <ProjectCard project={project} />)}
+        </ul>
+      </SlideIn>
     </div>
   </main>
 </Layout>

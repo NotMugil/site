@@ -1,8 +1,8 @@
 ---
 title: eww widgets
-description: collection of eww widgets that I made during my study holidays.
+description: widgets that I made during study holidays.
 image: ./alice.png
 imageAlt: Eggs, larva, pupa, adult.
-tags: ["linux"]
+tags: ["linux", "eww"]
 url: "https://github.com/NotMugil/eww"
 ---

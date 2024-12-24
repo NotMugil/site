@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
+import SlideIn from "@/components/animations/SlideIn";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -12,27 +13,29 @@ const { project } = Astro.props;
 <div
   class="flex gap-0 rounded-md border-opacity-0 bg-[#0f0f0f] p-4 hover:bg-[#171717]"
 >
-  <div
-    class="bg-opacity-70 transition duration-300 ease-in-out hover:bg-opacity-100"
-  >
-    <a href={project.data.url} class="text-white no-underline">
-      <li>
-        <div class="flex flex-col">
-          <p class="pb-1 text-lg font-bold">{project.data.title}</p>
-          <p class="text-sm text-gray-300">{project.data.description}</p>
-          <div class="mt-2">
-            {
-              project.data.tags && (
-                <div class="flex flex-wrap gap-2">
-                  {project.data.tags.map((tag: any) => (
-                    <span class="text-sm text-gray-400">{tag}</span>
-                  ))}
-                </div>
-              )
-            }
+  <SlideIn client:load>
+    <div
+      class="bg-opacity-70 transition duration-300 ease-in-out hover:bg-opacity-100"
+    >
+      <a href={project.data.url} class="text-white no-underline">
+        <li>
+          <div class="flex flex-col">
+            <p class="pb-1 text-lg font-bold">{project.data.title}</p>
+            <p class="text-sm text-gray-300">{project.data.description}</p>
+            <div class="mt-2">
+              {
+                project.data.tags && (
+                  <div class="flex flex-wrap gap-2">
+                    {project.data.tags.map((tag: any) => (
+                      <span class="text-sm text-gray-400">{tag}</span>
+                    ))}
+                  </div>
+                )
+              }
+            </div>
           </div>
-        </div>
-      </li>
-    </a>
-  </div>
+        </li>
+      </a>
+    </div>
+  </SlideIn>
 </div>
