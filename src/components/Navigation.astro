@@ -6,7 +6,7 @@ import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/consts";
   class="sticky top-4 z-50 m-4 mx-auto flex justify-center overflow-x-hidden pb-8"
 >
   <div
-    class="mx-4 flex w-full flex-col rounded-lg bg-[#0F0F0F] bg-opacity-80 px-8 backdrop-blur-lg md:flex-row"
+    class="mx-4 flex w-full flex-col rounded-lg bg-[#f5f5f5] bg-opacity-100 px-8 drop-shadow-sm backdrop-blur-lg md:flex-row dark:bg-[#0F0F0F] dark:bg-opacity-80"
   >
     <div class="my-1 flex w-full flex-row items-center justify-between">
       <div class="p-2">
@@ -14,13 +14,16 @@ import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/consts";
           href="/"
           class="text-md mr-auto px-2 font-semibold no-underline sm:text-xl"
         >
-          <span class="text-violet-500">not</span><span class="text-white"
-            >mugil.</span
+          <span class="text-violet-500">not</span><span
+            class="text-black dark:text-white">mugil.</span
           >
         </a>
       </div>
       <div>
-        <button id="menu-toggle" class="toggle text-primary p-2 md:hidden">
+        <button
+          id="menu-toggle"
+          class="toggle p-2 text-black md:hidden dark:text-white"
+        >
           <svg
             viewBox="0 0 15 15"
             fill="none"
@@ -34,7 +37,9 @@ import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/consts";
         </button>
       </div>
     </div>
-    <nav class="text-secondary md:align-center md:mx-auto md:flex md:pl-0">
+    <nav
+      class="dark:text-secondary md:align-center text-gray-600 md:mx-auto md:flex md:pl-0"
+    >
       <ul
         id="nav-list"
         class="nav-li md:align-center mx-1 my-auto mb-4 hidden transition-all duration-300 md:my-auto md:flex md:flex-nowrap md:gap-4"
@@ -45,7 +50,7 @@ import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/consts";
               <li class="self-center p-1 md:p-0">
                 <a
                   href={NAV_LINKS[navItemKey].path}
-                  class="mx-2 text-white no-underline opacity-80 hover:opacity-100"
+                  class="mx-2 text-black no-underline opacity-80 hover:opacity-100 dark:text-white"
                 >
                   {NAV_LINKS[navItemKey].label}
                 </a>

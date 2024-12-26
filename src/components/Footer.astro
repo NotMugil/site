@@ -2,23 +2,27 @@
 import { Github, Mail, Rss } from "lucide-astro";
 ---
 
-<hr class="my-8 w-1/5 border-[1px] opacity-5" />
-<div class="flex flex-row items-center justify-between">
+<hr
+  class="my-8 w-1/5 border-[1px] border-gray-500 opacity-50 dark:border-white dark:opacity-5"
+/>
+<div
+  class="mb-2 flex flex-row items-center justify-between text-gray-600 dark:text-gray-300"
+>
   <div>
     <ul class="flex flex-row justify-start gap-4">
       <li>
         <a href="https://github.com/notmugil">
-          <span class="opacity-70"><Github /></span>
+          <span class="opacity-70 hover:opacity-100"><Github /></span>
         </a>
       </li>
       <li>
         <a href="mailto:hi@notmugil.com" target="_blank">
-          <span class="opacity-70"><Mail /></span>
+          <span class="opacity-70 hover:opacity-100"><Mail /></span>
         </a>
       </li>
       <li>
         <a href="/rss.xml">
-          <span class="opacity-70"><Rss /></span>
+          <span class="opacity-70 hover:opacity-100"><Rss /></span>
         </a>
       </li>
     </ul>

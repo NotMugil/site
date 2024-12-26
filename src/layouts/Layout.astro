@@ -11,9 +11,9 @@ import Footer from "@/components/Footer.astro";
   <BaseHead>
     <slot name="head" />
   </BaseHead>
-  <body>
+  <body class="bg-[#f0f0f0] dark:bg-[#0a0a0a]">
     <main
-      class="mx-41 md:mx-0` mx-4 min-h-screen max-w-screen-sm overflow-hidden p-3 font-sans sm:p-6 md:mx-auto"
+      class="mx-41 md:mx-0` mx-4 min-h-screen max-w-screen-sm overflow-hidden bg-[#f0f0f0] p-3 font-sans sm:p-6 md:mx-auto dark:bg-[#0a0a0a]"
     >
       <Navigation />
       <slot />

@@ -38,7 +38,9 @@ const { Content, headings } = await entry.render();
   <SeoPost slot="head" entry={entry} />
   <div>
     <!-- Blog Info -->
-    <h1 class="mt-3 py-2 text-2xl font-bold">{entry.data.title}</h1>
+    <h1 class="mt-3 py-2 text-2xl font-bold text-black dark:text-white">
+      {entry.data.title}
+    </h1>
     <div class="flex flex-row gap-2 text-gray-400">
       <p class="text-sm md:text-xs">{readTime}</p>
       <span class="text-sm md:text-xs">•</span>
@@ -49,18 +51,18 @@ const { Content, headings } = await entry.render();
     <SlideIn client:load>
       <div class="mt-10 flex flex-row">
         <article
-          class="flex-l prose prose-dark z-10 mx-auto w-full lg:max-w-screen-md"
+          class="flex-l prose z-10 mx-auto w-full dark:prose dark:prose-dark lg:max-w-screen-md dark:text-white"
         >
           <Content />
         </article>
       </div>
     </SlideIn>
 
-    <Drag client:load>
-      <!-- Author Info -->
-      {
-        author ? (
-          <div class="mt-8 flex flex-col items-start gap-2">
+    <!-- Author Info -->
+    {
+      author ? (
+        <div class="mt-8 flex flex-col items-start gap-2">
+          <Drag client:load>
             <div>
               {author.data.avatar && (
                 <a href={`/authors/${author.slug}`}>
@@ -75,27 +77,31 @@ const { Content, headings } = await entry.render();
                 </a>
               )}
             </div>
-            <div class="flex flex-col">
-              <a
-                href={`/authors/${author.slug}`}
-                class="decor text-sm font-semibold text-gray-900 dark:text-gray-100"
-              >
-                by <span class="text-gray-400"> @{author.data.name} </span>
-              </a>
-            </div>
+          </Drag>
+          <div class="flex flex-col">
+            <a
+              href={`/authors/${author.slug}`}
+              class="decor text-sm font-semibold text-gray-900 dark:text-gray-100"
+            >
+              by{" "}
+              <span class="text-gray-600 dark:text-gray-400">
+                {" "}
+                @{author.data.name}{" "}
+              </span>
+            </a>
           </div>
-        ) : (
-          <div class="mt-8 flex flex-col items-start text-center">
-            <div class="my-2 h-8 w-8 rounded-md bg-gray-200 dark:bg-gray-700" />
-            <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">
-              Unknown Author
-            </p>
-            <p class="text-xs text-gray-500 dark:text-gray-400">
-              This author is currently not listed in our records.
-            </p>
-          </div>
-        )
-      }
-    </Drag>
+        </div>
+      ) : (
+        <div class="mt-8 flex flex-col items-start text-center">
+          <div class="my-2 h-8 w-8 rounded-md bg-gray-200 dark:bg-gray-700" />
+          <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">
+            Unknown Author
+          </p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">
+            This author is currently not listed in our records.
+          </p>
+        </div>
+      )
+    }
   </div>
 </Layout>
