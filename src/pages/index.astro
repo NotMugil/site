@@ -1,81 +1,19 @@
 ---
-import { getCollection } from "astro:content";
-import { Forward } from "lucide-astro";
 import Layout from "@/layouts/Layout.astro";
-import FadeIn from "@/components/animations/FadeIn.jsx";
-import SlideIn from "@/components/animations/SlideIn.jsx";
-import BlogCard from "@/components/BlogCard.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
+import Blog from "@/components/Blog.astro";
+import Project from "@/components/Project.astro";
 import SeoPage from "@/components/SeoPage.astro";
 import Hero from "@/components/Hero.astro";
-
-const posts = (await getCollection("blog"))
-  .sort(
-    (
-      a: { data: { publicationDate: any } },
-      b: { data: { publicationDate: any } },
-    ) => b.data.publicationDate.valueOf() - a.data.publicationDate.valueOf(),
-  )
-  .slice(0, 3);
-
-const projects = (await getCollection("projects")).slice(0, 3);
+import Seperator from "@/components/Seperator.astro";
 ---
 
 <Layout>
   <SeoPage slot="head" />
   <main>
     <Hero />
-    <hr
-      class="my-8 w-1/5 border-[1px] border-gray-500 opacity-50 dark:border-white dark:opacity-5"
-    />
-    <!-- Blog posts -->
-    <div class="mb-6">
-      <div class="mb-6 flex flex-row items-center justify-between">
-        <div>
-          <h2 class="text-lg font-bold text-black dark:text-white">
-            Recent blogs
-          </h2>
-          <p class="text-sm text-gray-500">
-            I don't write much but here are some.
-          </p>
-        </div>
-        <a
-          href="/blog"
-          class="hidden text-gray-400 no-underline hover:text-black hover:underline md:block dark:hover:text-white"
-          ><Forward /></a
-        >
-      </div>
-      <SlideIn client:visible>
-        <ul class="grid list-none gap-2 p-0">
-          {posts.map((post: any) => <BlogCard post={post} />)}
-        </ul>
-      </SlideIn>
-    </div>
-    <hr
-      class="my-8 w-1/5 border-[1px] border-gray-500 opacity-50 dark:border-white dark:opacity-5"
-    />
-    <!-- Projects cards -->
-    <div class="mb-6">
-      <div class="mb-6 flex flex-row items-center justify-between">
-        <div>
-          <h2 class="text-lg font-bold text-black dark:text-white">
-            Featured projects
-          </h2>
-          <p class="text-sm text-gray-500">
-            Projects that I've developed or contributed to.
-          </p>
-        </div>
-        <a
-          href="/projects"
-          class="hidden text-gray-400 no-underline hover:text-black hover:underline md:block dark:hover:text-white"
-          ><Forward />
-        </a>
-      </div>
-      <SlideIn client:load>
-        <ul class="grid list-none grid-cols-1 gap-2 p-0 md:grid-cols-3">
-          {projects.map((project: any) => <ProjectCard project={project} />)}
-        </ul>
-      </SlideIn>
-    </div>
+    <Seperator />
+    <Project />
+    <Seperator />
+    <Blog />
   </main>
 </Layout>

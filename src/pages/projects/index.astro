@@ -1,9 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-
 import Layout from "@/layouts/Layout.astro";
-
-import Project from "@/components/Project.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 import SeoPage from "@/components/SeoPage.astro";
 
 const projects = await getCollection("projects");
@@ -18,8 +16,7 @@ const projects = await getCollection("projects");
     </p>
   </div>
 
-  <!-- <hr class="my-8 border-[1px] opacity-5" /> -->
   <ul class="grid list-none grid-cols-1 gap-2 p-0">
-    {projects.map((project: any) => <Project project={project} />)}
+    {projects.map((project: any) => <ProjectCard project={project} />)}
   </ul>
 </Layout>
