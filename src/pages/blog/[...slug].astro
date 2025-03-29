@@ -30,6 +30,24 @@ if (!author) {
   );
 }
 
+const blog = await getCollection("blog");
+const sortedPosts = blog.sort(
+  (
+    a: { data: { publicationDate: Date } },
+    b: { data: { publicationDate: Date } },
+  ) => b.data.publicationDate.valueOf() - a.data.publicationDate.valueOf(),
+);
+
+const currentPostIndex = sortedPosts.findIndex(
+  (post) => post.slug === entry.slug,
+);
+
+const previousPost = sortedPosts[currentPostIndex - 1] || null;
+const nextPost = sortedPosts[currentPostIndex + 1] || null;
+const otherPosts = blog.filter((post) => post.slug !== entry.slug);
+const randomPost =
+  otherPosts[Math.floor(Math.random() * otherPosts.length)] || null;
+
 const readTime = readingTime(entry.body);
 const { Content, headings } = await entry.render();
 ---
@@ -110,6 +128,50 @@ const { Content, headings } = await entry.render();
           </article>
         </div>
       </SlideIn>
+      <br />
+      <div
+        class="text-dark-primary dark:text-light-primary my-8 flex w-full flex-row justify-between gap-4"
+      >
+        {
+          previousPost ? (
+            <a
+              href={`/blog/${previousPost.slug}`}
+              class="hover:bg-light-secondary dark:hover:bg-dark-secondary bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent w-1/2 rounded-lg border border-opacity-10 p-4 dark:border dark:border-opacity-10"
+            >
+              <p class="opacity-50"> Previous Post </p>
+              {previousPost.data.title}
+            </a>
+          ) : (
+            <a
+              href={`/blog/${randomPost.slug}`}
+              class="hover:bg-light-secondary dark:hover:bg-dark-secondary bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent w-1/2 rounded-lg border border-opacity-10 p-4 dark:border dark:border-opacity-10"
+            >
+              <p class="opacity-50"> Random Post </p>
+              {randomPost.data.title}
+            </a>
+          )
+        }
+
+        {
+          nextPost ? (
+            <a
+              href={`/blog/${nextPost.slug}`}
+              class="hover:bg-light-secondary dark:hover:bg-dark-secondary bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent w-1/2 rounded-lg border border-opacity-10 p-4 dark:border dark:border-opacity-10"
+            >
+              <p class="opacity-50"> Next Post </p>
+              {nextPost.data.title}
+            </a>
+          ) : (
+            <a
+              href={`/blog/${previousPost.slug}`}
+              class="hover:bg-light-secondary dark:hover:bg-dark-secondary bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent w-1/2 rounded-lg border border-opacity-10 p-4 dark:border dark:border-opacity-10"
+            >
+              <p class="opacity-50"> Random Post </p>
+              {previousPost.data.title}
+            </a>
+          )
+        }
+      </div>
     </div>
   </div>
 </BlogLayout>

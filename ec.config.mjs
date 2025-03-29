@@ -1,7 +1,7 @@
 import { defineEcConfig } from "astro-expressive-code";
 
 export default defineEcConfig({
-  themes: ["rose-pine-dawn", "rose-pine"],
+  themes: ["rose-pine-dawn", "kanagawa-dragon"],
   // styleOverrides: {
   //   codeFontFamily: "GeistMono",
   //   borderRadius: "0.5rem",
