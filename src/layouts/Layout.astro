@@ -12,10 +12,10 @@ import Footer from "@/components/Footer.astro";
   <BaseHead>
     <slot name="head" />
   </BaseHead>
-  <body class="bg-[#f0f0f0] dark:bg-[#0a0a0a]">
+  <body class="bg-light-background dark:bg-dark-background">
     <Navigation />
     <main
-      class="mx-41 md:mx-0` mx-4 min-h-screen max-w-screen-lg overflow-hidden bg-[#f0f0f0] p-3 font-sans sm:p-6 md:mx-auto dark:bg-[#0a0a0a]"
+      class="mx-4 min-h-screen max-w-screen-lg overflow-hidden p-3 font-sans sm:p-6 md:mx-auto"
     >
       <slot />
     </main>

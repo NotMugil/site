@@ -10,7 +10,7 @@ import type {
 export const SITE: SiteConfiguration = {
   title: "notmugil",
   description: "personal site.",
-  url: "https://notmugil.me",
+  url: "https://notmugil.com",
   author: "NotMugil",
   locale: "en-US",
 };
