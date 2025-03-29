@@ -1,3 +1,6 @@
+import { Github, Mail, Rss } from "lucide-astro";
+import BlueskyIcon from "@/components/icons/BlueskyIcon";
+
 import type {
   SiteConfiguration,
   NavigationLinks,
@@ -24,12 +27,24 @@ export const NAV_LINKS: NavigationLinks = {
 };
 
 export const SOCIAL_LINKS: SocialLinks = {
+  bluesky: {
+    label: "Bluesky",
+    url: "https://bsky.app/profile/notmugil.com",
+    icon: BlueskyIcon,
+  },
   email: {
     label: "Email",
     url: "mailto:hi@notmugil.com",
+    icon: Mail,
   },
   github: {
     label: "GitHub",
     url: "https://github.com/NotMugil",
+    icon: Github,
+  },
+  rss: {
+    label: "Rss",
+    url: "https://github.com/NotMugil",
+    icon: Rss,
   },
 };

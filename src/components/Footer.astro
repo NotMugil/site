@@ -1,27 +1,37 @@
 ---
-import { Github, Mail, Rss } from "lucide-astro";
+import SlideIn from "@/components/animations/SlideIn.jsx";
+import { SOCIAL_LINKS } from "@/consts";
 ---
 
-<div
-  class="mb-2 flex flex-row items-center justify-between text-gray-600 dark:text-gray-300"
->
-  <div>
-    <ul class="flex flex-row justify-start gap-4">
-      <li>
-        <a href="https://github.com/notmugil">
-          <span class="opacity-70 hover:opacity-100"><Github /></span>
-        </a>
-      </li>
-      <li>
-        <a href="mailto:hi@notmugil.com" target="_blank">
-          <span class="opacity-70 hover:opacity-100"><Mail /></span>
-        </a>
-      </li>
-      <li>
-        <a href="/rss.xml">
-          <span class="opacity-70 hover:opacity-100"><Rss /></span>
-        </a>
-      </li>
+<div class="mb-4 flex flex-row items-center justify-between">
+  <p class="text-md text-gray-500">Socials</p>
+</div>
+
+<SlideIn client:load>
+  <div
+    class="flex list-none flex-col gap-1 rounded-xl border border-white border-opacity-10 bg-[#f5f5f5] p-2 dark:bg-[#0f0f0f]"
+  >
+    <ul class="flex flex-col text-gray-600 dark:text-gray-300">
+      {
+        Object.keys(SOCIAL_LINKS).map((socialItemKey) => {
+          const IconComponent = SOCIAL_LINKS[socialItemKey].icon;
+          return (
+            <>
+              <hr class="border-b-1 mx-2 border-white border-opacity-5 first:border-0" />
+              <a href={SOCIAL_LINKS[socialItemKey].url} class="">
+                <li class="flex min-h-full gap-1 rounded-lg border border-white border-opacity-0 bg-[#f5f5f5] p-4 drop-shadow-sm hover:border hover:border-white hover:border-opacity-10 hover:bg-[#ffffff] hover:drop-shadow-md dark:bg-[#0f0f0f] dark:hover:bg-[#171717]">
+                  <div class="align-center flex flex-row items-center gap-4">
+                    <span class="items-center opacity-80">
+                      <IconComponent size={16} />
+                    </span>
+                    {SOCIAL_LINKS[socialItemKey].label}
+                  </div>
+                </li>
+              </a>
+            </>
+          );
+        })
+      }
     </ul>
   </div>
-</div>
+</SlideIn>

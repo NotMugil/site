@@ -5,7 +5,7 @@ import FadeIn from "@/components/animations/FadeIn.jsx";
 import SlideIn from "@/components/animations/SlideIn.jsx";
 import ProjectCard from "@/components/ProjectCard.astro";
 
-const projects = (await getCollection("projects")).slice(0, 3);
+const projects = (await getCollection("projects")).slice(0, 5);
 ---
 
 <div class="mb-6">
@@ -18,10 +18,12 @@ const projects = (await getCollection("projects")).slice(0, 3);
     </a> -->
   </div>
   <SlideIn client:load>
-    <ul
+    <div
       class="flex list-none flex-col gap-1 rounded-xl border border-white border-opacity-10 bg-[#f5f5f5] p-2 dark:bg-[#0f0f0f]"
     >
-      {projects.map((project: any) => <ProjectCard project={project} />)}
-    </ul>
+      <ul>
+        {projects.map((project: any) => <ProjectCard project={project} />)}
+      </ul>
+    </div>
   </SlideIn>
 </div>
