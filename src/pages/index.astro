@@ -10,13 +10,20 @@ import Footer from "@/components/Footer.astro";
 
 <Layout>
   <SeoPage slot="head" />
-  <main>
-    <Hero />
-    <Seperator />
-    <Project />
-    <br />
-    <Blog />
-    <br />
-    <Footer />
+  <main class="relative flex min-h-screen flex-col">
+    <div class="flex flex-col gap-4 md:grid md:grid-cols-5 md:gap-2">
+      <div class="overflow-auto md:sticky md:top-0 md:col-span-2">
+        <Hero />
+        <br />
+      </div>
+      <div class="md:col-span-3 md:overflow-hidden">
+        <Project />
+        <br />
+        <Blog />
+        <br />
+        <Footer />
+        <br />
+      </div>
+    </div>
   </main>
 </Layout>

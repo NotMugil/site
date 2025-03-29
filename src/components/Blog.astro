@@ -11,7 +11,7 @@ const posts = (await getCollection("blog"))
       b: { data: { publicationDate: any } },
     ) => b.data.publicationDate.valueOf() - a.data.publicationDate.valueOf(),
   )
-  .slice(0, 3);
+  .slice(0, 5);
 ---
 
 <div class="mb-6">
@@ -25,7 +25,7 @@ const posts = (await getCollection("blog"))
   </div>
   <SlideIn client:visible>
     <ul
-      class="flex list-none flex-col gap-0 rounded-xl border border-white border-opacity-10 bg-[#f5f5f5] p-2 dark:bg-[#0f0f0f]"
+      class="bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent flex list-none flex-col gap-0 rounded-xl border border-opacity-10 p-2 dark:border-opacity-10"
     >
       {posts.map((post: any) => <BlogCard post={post} />)}
     </ul>

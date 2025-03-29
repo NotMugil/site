@@ -4,9 +4,11 @@ import { formatDate } from "@/lib/util";
 const { post } = Astro.props;
 ---
 
-<hr class="border-b-1 mx-2 border-white border-opacity-5 first:border-0" />
+<hr
+  class="border-b-1 border-light-accent dark:border-dark-accent mx-2 border-opacity-5 first:border-0 dark:border-opacity-10"
+/>
 <li
-  class="flex flex-col rounded-lg border border-white border-opacity-0 no-underline hover:border hover:border-white hover:border-opacity-10 hover:bg-[#ffffff] dark:hover:bg-[#171717]"
+  class="hover:border-light-accent dark:hover:border-dark-accent hover:bg-light-secondary dark:hover:bg-dark-secondary flex flex-col rounded-lg border border-white border-opacity-0 no-underline hover:border hover:border-opacity-10 hover:dark:border-opacity-10"
 >
   <a
     href={`/blog/${post.slug}`}

@@ -2,8 +2,22 @@
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    // darkMode: "selector",
+    darkMode: "class",
     extend: {
+      colors: {
+        light: {
+          background: "#fafafa",
+          primary: "#ffffff",
+          secondary: "#fafafa",
+          accent: "#181818",
+        },
+        dark: {
+          background: "#0a0a0a",
+          primary: "#0f0f0f",
+          secondary: "#171717",
+          accent: "#fafafa",
+        },
+      },
       fontFamily: {
         sans: ["Geist"],
         mono: ["GeistMono"],

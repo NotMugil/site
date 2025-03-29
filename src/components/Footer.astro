@@ -9,7 +9,7 @@ import { SOCIAL_LINKS } from "@/consts";
 
 <SlideIn client:load>
   <div
-    class="flex list-none flex-col gap-1 rounded-xl border border-white border-opacity-10 bg-[#f5f5f5] p-2 dark:bg-[#0f0f0f]"
+    class="bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent flex list-none flex-col gap-1 rounded-xl border border-opacity-10 p-2 dark:border-opacity-10"
   >
     <ul class="flex flex-col text-gray-600 dark:text-gray-300">
       {
@@ -17,11 +17,11 @@ import { SOCIAL_LINKS } from "@/consts";
           const IconComponent = SOCIAL_LINKS[socialItemKey].icon;
           return (
             <>
-              <hr class="border-b-1 mx-2 border-white border-opacity-5 first:border-0" />
+              <hr class="border-b-1 border-light-accent dark:border-dark-accent mx-2 border-opacity-5 first:border-0 dark:border-opacity-10" />
               <a href={SOCIAL_LINKS[socialItemKey].url} class="">
-                <li class="flex min-h-full gap-1 rounded-lg border border-white border-opacity-0 bg-[#f5f5f5] p-4 drop-shadow-sm hover:border hover:border-white hover:border-opacity-10 hover:bg-[#ffffff] hover:drop-shadow-md dark:bg-[#0f0f0f] dark:hover:bg-[#171717]">
+                <li class="bg-light-primary hover:bg-light-secondary dark:bg-dark-primary dark:hover:bg-dark-secondary hover:border-light-accent dark:hover:border-dark-accent flex min-h-full gap-1 rounded-lg border border-white border-opacity-0 p-4 hover:border hover:border-opacity-10 hover:dark:border-opacity-10">
                   <div class="align-center flex flex-row items-center gap-4">
-                    <span class="items-center opacity-80">
+                    <span class="text-light-accent dark:text-dark-accent items-center opacity-80">
                       <IconComponent size={16} />
                     </span>
                     {SOCIAL_LINKS[socialItemKey].label}

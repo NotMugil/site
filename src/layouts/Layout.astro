@@ -15,9 +15,34 @@ import Footer from "@/components/Footer.astro";
   <body class="bg-[#f0f0f0] dark:bg-[#0a0a0a]">
     <Navigation />
     <main
-      class="mx-41 md:mx-0` mx-4 min-h-screen max-w-screen-sm overflow-hidden bg-[#f0f0f0] p-3 font-sans sm:p-6 md:mx-auto dark:bg-[#0a0a0a]"
+      class="mx-41 md:mx-0` mx-4 min-h-screen max-w-screen-lg overflow-hidden bg-[#f0f0f0] p-3 font-sans sm:p-6 md:mx-auto dark:bg-[#0a0a0a]"
     >
       <slot />
     </main>
   </body>
 </html>
+
+<style>
+  body {
+    position: relative;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 14ch);
+    width: 1px;
+    z-index: 0;
+    background-color: rgba(105, 105, 105, 0.18);
+    pointer-events: none;
+  }
+
+  @media (min-width: 976px) {
+    body::after {
+      left: calc(50% - 14ch);
+      opacity: 100;
+    }
+  }
+</style>
