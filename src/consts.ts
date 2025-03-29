@@ -44,7 +44,7 @@ export const SOCIAL_LINKS: SocialLinks = {
   },
   rss: {
     label: "Rss",
-    url: "https://github.com/NotMugil",
+    url: "/rss.xml",
     icon: Rss,
   },
 };

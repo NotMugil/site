@@ -32,11 +32,11 @@ const sortedYears = Object.keys(postsByYear)
 
 <Layout>
   <SeoPage slot="head" title="blog" />
-  <div class="grid grid-cols-8 gap-20">
-    <div class="col-span-3">
+  <div class="flex flex-col gap-2 md:grid md:grid-cols-8 md:gap-20">
+    <div class="invisible md:visible md:col-span-3">
       <p class="text-md font-bold text-black dark:text-white">Tags</p>
     </div>
-    <div class="col-span-5">
+    <div class="md:col-span-5">
       {
         sortedYears.map((year) => (
           <div class="mb-8">
