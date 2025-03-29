@@ -5,5 +5,11 @@
 - [ ] comments section for blog
 - [ ] table of contents
 - [ ] projects listing page
-- [ ] blogs listing page
+  - [ ] detailed project explaination
+- [x] blogs listing page layout
+  - [ ] tags listing
+  - [ ] functional filters using tags
 - [ ] working bookshelf
+  - [ ] shelves (read, to-read, currently reading)
+  - [ ] reading goals
+  - [ ] book reviews
