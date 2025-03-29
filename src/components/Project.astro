@@ -8,25 +8,19 @@ import ProjectCard from "@/components/ProjectCard.astro";
 const projects = (await getCollection("projects")).slice(0, 3);
 ---
 
-<!-- Projects cards -->
 <div class="mb-6">
-  <div class="mb-6 flex flex-row items-center justify-between">
-    <div>
-      <h2 class="text-lg font-bold text-black dark:text-white">
-        Featured projects
-      </h2>
-      <p class="text-sm text-gray-500">
-        Projects that I've developed or contributed to.
-      </p>
-    </div>
-    <a
+  <div class="mb-4 flex flex-row items-center justify-between">
+    <p class="text-md text-gray-500">Featured projects</p>
+    <!-- <a
       href="/projects"
       class="hidden text-gray-400 no-underline hover:text-black hover:underline md:block dark:hover:text-white"
       ><Forward />
-    </a>
+    </a> -->
   </div>
   <SlideIn client:load>
-    <ul class="group grid list-none grid-cols-1 gap-2 p-0 md:grid-cols-3">
+    <ul
+      class="flex list-none flex-col gap-1 rounded-xl border border-white border-opacity-10 bg-[#f5f5f5] p-2 dark:bg-[#0f0f0f]"
+    >
       {projects.map((project: any) => <ProjectCard project={project} />)}
     </ul>
   </SlideIn>

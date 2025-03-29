@@ -8,13 +8,9 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<a
-  href={project.data.url}
-  class="text-white no-underline transition-all duration-500 hover:!blur-none group-hover:blur-sm"
-  target="_blank"
->
+<a href={project.data.url} class="text-white no-underline" target="_blank">
   <div
-    class="flex min-h-full gap-0 rounded-md border-opacity-0 bg-[#f5f5f5] p-4 drop-shadow-sm transition duration-500 hover:bg-[#ffffff] hover:drop-shadow-md dark:bg-[#0f0f0f] dark:hover:bg-[#171717]"
+    class="flex min-h-full gap-1 rounded-lg border border-white border-opacity-0 bg-[#f5f5f5] p-4 drop-shadow-sm hover:border hover:border-white hover:border-opacity-10 hover:bg-[#ffffff] hover:drop-shadow-md dark:bg-[#0f0f0f] dark:hover:bg-[#171717]"
   >
     <div
       class="bg-opacity-70 transition duration-300 ease-in-out dark:hover:bg-opacity-100"
