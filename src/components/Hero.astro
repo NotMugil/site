@@ -12,14 +12,12 @@ import SlideIn from "@/components/animations/SlideIn";
       />
     </div>
     <div>
-      <h1 class="text-xl font-bold text-black dark:text-white">
-        Hi. I'm Mugilan.
-      </h1>
-      <h1 class="text-xl font-bold text-[#726867] dark:text-gray-300">
+      <h1 class="mainheading text-xl">Hi. I'm Mugilan.</h1>
+      <h1 class="subheading text-xl">
         Developer from <span class="">Chennai, India.</span>
       </h1>
       <SlideIn client:load>
-        <p class="text-md mt-2 text-[#726867] dark:text-gray-400">
+        <p class="text-md subtext mt-2">
           <span id="this-guy-changes">...</span>
         </p>
       </SlideIn>
@@ -51,4 +49,6 @@ import SlideIn from "@/components/animations/SlideIn";
   }
 
   getGitHubStatus();
+
+  setInterval(getGitHubStatus, 15000);
 </script>

@@ -1,25 +1,17 @@
 import { SITE } from "@/consts";
 import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 
-export function formatDate(
-  date: Date,
-  options: {
-    year?: "numeric" | "2-digit";
-    month?: "numeric" | "2-digit" | "long" | "short" | "narrow";
-    day?: "numeric" | "2-digit";
-  } = {},
-  locale: string = SITE.locale,
-): string {
-  const defaultOptions: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long", // Full month name (e.g., October)
-    day: "2-digit", // Day in two digits (e.g., 02)
-  };
+export const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+};
 
-  const formatOptions = { ...defaultOptions, ...options };
-
-  return new Intl.DateTimeFormat(locale, formatOptions).format(date);
-}
+export const formatDateShort = (dateString) => {
+  const date = new Date(dateString);
+  const options = { month: "short", day: "numeric" };
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+};
 
 export function readingTime(html: string) {
   const textOnly = html.replace(/<[^>]+>/g, "");

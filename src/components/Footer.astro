@@ -4,27 +4,29 @@ import { SOCIAL_LINKS } from "@/consts";
 ---
 
 <div class="mb-4 flex flex-row items-center justify-between">
-  <p class="text-md text-gray-500">Socials</p>
+  <p class="text-md subheading">Socials</p>
 </div>
 
 <SlideIn client:load>
   <div
-    class="bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent flex list-none flex-col gap-1 rounded-xl border border-opacity-10 p-2 dark:border-opacity-10"
+    class="box-bg default-border flex list-none flex-col gap-1 rounded-xl p-2"
   >
-    <ul class="flex flex-col text-gray-600 dark:text-gray-300">
+    <ul class="flex flex-col">
       {
         Object.keys(SOCIAL_LINKS).map((socialItemKey) => {
           const IconComponent = SOCIAL_LINKS[socialItemKey].icon;
           return (
             <>
-              <hr class="border-b-1 border-light-accent dark:border-dark-accent mx-2 border-opacity-5 first:border-0 dark:border-opacity-10" />
+              <hr class="seperator" />
               <a href={SOCIAL_LINKS[socialItemKey].url} class="">
-                <li class="bg-light-primary hover:bg-light-secondary dark:bg-dark-primary dark:hover:bg-dark-secondary hover:border-light-accent dark:hover:border-dark-accent flex min-h-full gap-1 rounded-lg border border-white border-opacity-0 p-4 hover:border hover:border-opacity-10 hover:dark:border-opacity-10">
+                <li class="hover-element flex min-h-full gap-1 rounded-lg p-4">
                   <div class="align-center flex flex-row items-center gap-4">
-                    <span class="text-light-accent dark:text-dark-accent items-center opacity-80">
+                    <span class="maintext items-center opacity-80">
                       <IconComponent size={16} />
                     </span>
-                    {SOCIAL_LINKS[socialItemKey].label}
+                    <span class="maintext">
+                      {SOCIAL_LINKS[socialItemKey].label}
+                    </span>
                   </div>
                 </li>
               </a>

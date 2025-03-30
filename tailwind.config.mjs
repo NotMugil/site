@@ -10,12 +10,18 @@ export default {
           primary: "#ffffff",
           secondary: "#fafafa",
           accent: "#181818",
+          textPrimary: "#000000",
+          textSecondary: "#6b7280",
+          textMuted: "#9ea9cc",
         },
         dark: {
           background: "#0a0a0a",
           primary: "#0f0f0f",
           secondary: "#171717",
           accent: "#fafafa",
+          textPrimary: "#ffffff",
+          textSecondary: "#9ca3af",
+          textMuted: "#667178",
         },
       },
       fontFamily: {

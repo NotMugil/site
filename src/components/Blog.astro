@@ -16,7 +16,7 @@ const posts = (await getCollection("blog"))
 
 <div class="mb-6">
   <div class="mb-4 flex flex-row items-center justify-between">
-    <p class="text-md text-gray-500">Recent writings</p>
+    <p class="text-md subheading">Recent writings</p>
     <!-- <a
       href="/blog"
       class="hidden text-gray-400 no-underline hover:text-black hover:underline md:block dark:hover:text-white"
@@ -25,7 +25,7 @@ const posts = (await getCollection("blog"))
   </div>
   <SlideIn client:visible>
     <ul
-      class="bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent flex list-none flex-col gap-0 rounded-xl border border-opacity-10 p-2 dark:border-opacity-10"
+      class="box-bg default-border flex list-none flex-col gap-0 rounded-xl p-2"
     >
       {posts.map((post: any) => <BlogCard post={post} />)}
     </ul>

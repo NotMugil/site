@@ -24,6 +24,10 @@ export const NAV_LINKS: NavigationLinks = {
     path: "/projects",
     label: "projects",
   },
+  now: {
+    path: "/now",
+    label: "now",
+  },
 };
 
 export const SOCIAL_LINKS: SocialLinks = {
