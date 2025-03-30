@@ -1,12 +1,14 @@
 ---
 import HoverCard from "@/components/HoverCard.astro";
 import StaticLayout from "@/layouts/StaticLayout.astro";
+import SeoPage from "@/components/SeoPage.astro";
 ---
 
 <StaticLayout>
+  <SeoPage slot="head" title="now" />
   <body class="h-screen overflow-auto">
-    <div class="flex flex-col gap-8 md:grid md:grid-cols-8 mx-4 md:gap-20">
-      <div class="static md:sticky top-28 col-span-3 self-start">
+    <div class="mx-4 flex flex-col gap-8 md:grid md:grid-cols-8 md:gap-20">
+      <div class="static top-28 col-span-3 self-start md:sticky">
         <p class="mainheading text-md mb-4">Now</p>
         <p class="subtext">
           This page is inspired by <a
@@ -15,9 +17,7 @@ import StaticLayout from "@/layouts/StaticLayout.astro";
           > now page.
         </p>
       </div>
-      <div class="md:col-span-5 flex flex-col gap-8">
-
-      </div>
+      <div class="flex flex-col gap-8 md:col-span-5"></div>
     </div>
   </body>
 </StaticLayout>
