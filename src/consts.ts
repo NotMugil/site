@@ -27,11 +27,6 @@ export const NAV_LINKS: NavigationLinks = {
 };
 
 export const SOCIAL_LINKS: SocialLinks = {
-  bluesky: {
-    label: "Bluesky",
-    url: "https://bsky.app/profile/notmugil.com",
-    icon: BlueskyIcon,
-  },
   email: {
     label: "Email",
     url: "mailto:hi@notmugil.com",
@@ -41,6 +36,11 @@ export const SOCIAL_LINKS: SocialLinks = {
     label: "GitHub",
     url: "https://github.com/NotMugil",
     icon: Github,
+  },
+  bluesky: {
+    label: "Bluesky",
+    url: "https://bsky.app/profile/notmugil.com",
+    icon: BlueskyIcon,
   },
   rss: {
     label: "Rss",

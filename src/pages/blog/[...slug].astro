@@ -54,11 +54,11 @@ const { Content, headings } = await entry.render();
 
 <BlogLayout>
   <SeoPost slot="head" entry={entry} />
-  <div class="mx-2 h-full md:mx-0 md:grid md:grid-cols-5">
+  <div class="mx-1 h-full md:mx-0 md:grid md:grid-cols-5">
     <div class="z-2 m-4 flex flex-col md:col-span-2">
       <div class="sticky top-28">
         <p
-          class="text-light-accent dark:text-dark-accent text-sm text-opacity-70 md:text-sm dark:opacity-70"
+          class="text-sm text-light-accent text-opacity-70 md:text-sm dark:text-dark-accent dark:opacity-70"
         >
           {formatDate(entry.data.publicationDate)}
         </p>
@@ -67,7 +67,7 @@ const { Content, headings } = await entry.render();
         </h1>
         <div class="flex flex-col gap-2">
           <p
-            class="text-light-accent dark:text-dark-accent text-sm text-opacity-70 md:text-sm dark:opacity-70"
+            class="text-sm text-light-accent text-opacity-70 md:text-sm dark:text-dark-accent dark:opacity-70"
           >
             {readTime}
           </p>
@@ -130,13 +130,13 @@ const { Content, headings } = await entry.render();
       </SlideIn>
       <br />
       <div
-        class="text-dark-primary dark:text-light-primary my-8 flex w-full flex-row justify-between gap-4"
+        class="my-8 flex w-full flex-row justify-between gap-4 text-dark-primary dark:text-light-primary"
       >
         {
           previousPost ? (
             <a
               href={`/blog/${previousPost.slug}`}
-              class="hover:bg-light-secondary dark:hover:bg-dark-secondary bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent w-1/2 rounded-lg border border-opacity-10 p-4 dark:border dark:border-opacity-10"
+              class="w-1/2 rounded-lg border border-light-accent border-opacity-10 bg-light-primary p-4 hover:bg-light-secondary dark:border dark:border-dark-accent dark:border-opacity-10 dark:bg-dark-primary dark:hover:bg-dark-secondary"
             >
               <p class="opacity-50"> Previous Post </p>
               {previousPost.data.title}
@@ -144,7 +144,7 @@ const { Content, headings } = await entry.render();
           ) : (
             <a
               href={`/blog/${randomPost.slug}`}
-              class="hover:bg-light-secondary dark:hover:bg-dark-secondary bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent w-1/2 rounded-lg border border-opacity-10 p-4 dark:border dark:border-opacity-10"
+              class="w-1/2 rounded-lg border border-light-accent border-opacity-10 bg-light-primary p-4 hover:bg-light-secondary dark:border dark:border-dark-accent dark:border-opacity-10 dark:bg-dark-primary dark:hover:bg-dark-secondary"
             >
               <p class="opacity-50"> Random Post </p>
               {randomPost.data.title}
@@ -156,7 +156,7 @@ const { Content, headings } = await entry.render();
           nextPost ? (
             <a
               href={`/blog/${nextPost.slug}`}
-              class="hover:bg-light-secondary dark:hover:bg-dark-secondary bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent w-1/2 rounded-lg border border-opacity-10 p-4 dark:border dark:border-opacity-10"
+              class="w-1/2 rounded-lg border border-light-accent border-opacity-10 bg-light-primary p-4 hover:bg-light-secondary dark:border dark:border-dark-accent dark:border-opacity-10 dark:bg-dark-primary dark:hover:bg-dark-secondary"
             >
               <p class="opacity-50"> Next Post </p>
               {nextPost.data.title}
@@ -164,7 +164,7 @@ const { Content, headings } = await entry.render();
           ) : (
             <a
               href={`/blog/${previousPost.slug}`}
-              class="hover:bg-light-secondary dark:hover:bg-dark-secondary bg-light-primary dark:bg-dark-primary border-light-accent dark:border-dark-accent w-1/2 rounded-lg border border-opacity-10 p-4 dark:border dark:border-opacity-10"
+              class="w-1/2 rounded-lg border border-light-accent border-opacity-10 bg-light-primary p-4 hover:bg-light-secondary dark:border dark:border-dark-accent dark:border-opacity-10 dark:bg-dark-primary dark:hover:bg-dark-secondary"
             >
               <p class="opacity-50"> Random Post </p>
               {previousPost.data.title}
