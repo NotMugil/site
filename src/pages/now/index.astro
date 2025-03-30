@@ -1,18 +1,35 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import StaticLayout from "@/layouts/StaticLayout.astro";
 ---
 
-<Layout>
-  <div class="grid grid-cols-8 gap-20">
-    <div class="col-span-3">
-      <div class="box-bg default-border rounded-xl p-4"></div>
-      <div class="my-4 flex flex-col gap-2">
-        <p class="subtext text-sm">TL;DR</p>
-        <p class="maintext text-sm">I'm focused on improving japanese</p>
+<StaticLayout>
+  <body class="h-screen overflow-auto">
+    <div class="grid grid-cols-8 gap-20">
+      <div class="sticky top-28 col-span-3 self-start">
+        <p class="mainheading text-md mb-4">Now</p>
+        <p class="subtext">
+          This page is inspired by <a
+            class="text-wrap text-blue-400 underline"
+            href="https://nownownow.com/about">Derek Sivers's</a
+          > now page.
+        </p>
+      </div>
+      <div class="col-span-5 flex flex-col gap-16">
+        <div class="flex flex-col gap-4">
+          <p class="mainheading">Last Read</p>
+          <div class="flex w-full flex-row gap-4">
+            <div class="box-bg default-border w-full rounded-xl p-4"></div>
+            <div class="box-bg default-border w-full rounded-xl p-4"></div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-4">
+          <p class="mainheading">Last Watch</p>
+          <div class="flex w-full flex-row gap-4">
+            <div class="box-bg default-border w-full rounded-xl p-4"></div>
+            <div class="box-bg default-border w-full rounded-xl p-4"></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-span-5">
-      <div class="box-bg default-border rounded-xl p-4"></div>
-    </div>
-  </div>
-</Layout>
+  </body>
+</StaticLayout>
