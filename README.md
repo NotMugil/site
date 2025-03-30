@@ -4,7 +4,8 @@
 
 - [ ] comments section for blog
 - [ ] table of contents
-- [ ] projects listing page
+- [x] projects listing page
+  - [ ] change preview on hover
   - [ ] detailed project explaination
 - [x] blogs listing page layout
   - [ ] tags listing
