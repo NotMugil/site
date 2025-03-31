@@ -2,6 +2,7 @@
 
 ## Roadmap
 
+- [ ] migrate to tailwindv4
 - [ ] comments section for blog
 - [ ] table of contents
 - [x] projects listing page

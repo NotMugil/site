@@ -54,8 +54,8 @@ const { Content, headings } = await entry.render();
 
 <BlogLayout>
   <SeoPost slot="head" entry={entry} />
-  <div class="mx-1 h-full md:mx-0 md:grid md:grid-cols-5">
-    <div class="z-2 m-4 flex flex-col md:col-span-2">
+  <div class="mx-1 flex h-full flex-col gap-8 md:grid md:grid-cols-5">
+    <div class="z-2 my-4 flex flex-col md:col-span-2">
       <div class="sticky top-28">
         <p class="subtext text-sm md:text-sm">
           {formatDate(entry.data.publicationDate)}
@@ -114,7 +114,7 @@ const { Content, headings } = await entry.render();
       <SlideIn client:load>
         <div class="flex flex-row">
           <article
-            class="flex-l prose z-10 mx-auto w-full dark:prose dark:prose-dark lg:max-w-screen-md dark:text-white"
+            class="flex-l prose z-10 w-full dark:prose dark:prose-dark dark:text-white"
           >
             <Content />
           </article>
