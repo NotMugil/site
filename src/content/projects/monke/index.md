@@ -1,8 +1,8 @@
 ---
 title: monke
 description: simple rust discord bot.
-image: ./alice.png
-imageAlt: Eggs, larva, pupa, adult.
+image: ./monke.png
+imageAlt: rin shima holding rust programming book
 tags: ["rust"]
 url: "https://github.com/NotMugil/monke"
 ---
